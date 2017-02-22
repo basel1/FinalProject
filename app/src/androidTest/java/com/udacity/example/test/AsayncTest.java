@@ -31,11 +31,12 @@ public class AsayncTest  {
 
         final EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask();
         String result=null;
-        new Runnable(){
-            public void run(){
+
+       // new Runnable(){
+         //   public void run(){
                 endpointsAsyncTask.execute(mActivityRule.getActivity());
-            }
-        };
+           // }
+        //};
         try {
              result = endpointsAsyncTask.get();
         } catch (InterruptedException e) {
@@ -43,6 +44,6 @@ public class AsayncTest  {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-        Assert.assertTrue(result.length() > 0);
+        Assert.assertTrue(result.length() > 0 && !result.contains("failed"));
     }
 }
