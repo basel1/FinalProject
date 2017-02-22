@@ -6,6 +6,7 @@
 
 package com.example.Basel.myapplication.backend;
 
+import com.example.Joker;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
@@ -43,8 +44,9 @@ public class MyEndpoint {
     @ApiMethod(name="getJoke")
     public MyBean getJoke()
     {
+        Joker j=new Joker();
         MyBean response = new MyBean();
-        response.setData("Hi, " );
+        response.setData(j.getJoke());
 
         return response;
     }
