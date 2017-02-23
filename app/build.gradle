@@ -23,25 +23,33 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        free {
+            applicationId = "com.udacity.buildibigger.f"
+        }
+        paid
+                {
+                    applicationId = "com.udacity.buildibigger.p"
+                }
+    }
 }
-configurations.all {
-    resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.1'
-}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(":jokes")
-   // exclude group: 'com.android.support', module: 'support-v7'
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.google.android.gms:play-services-ads:9.8.0'
-    compile 'com.google.code.findbugs:jsr305:2.0.1'
+    // exclude group: 'com.android.support', module: 'support-v7'
     compile project(path: ':backend', configuration: 'android-endpoints')
-   // compile 'com.google.appengine:appengine-api-1.0-sdk:1.9.34'
+    // compile 'com.google.appengine:appengine-api-1.0-sdk:1.9.34'
     //compile 'com.google.appengine:appengine-endpoints:1.9.34'
     compile project(path: ':jokesdisplay')
-    androidTestCompile 'com.android.support:support-annotations:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.google.code.findbugs:jsr305:2.0.1'
+    compile 'com.android.support:support-v4:25.2.0'
+    androidTestCompile 'com.android.support:support-annotations:25.2.0'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
+    freeCompile 'com.google.android.gms:play-services-ads:9.8.0'
 }
